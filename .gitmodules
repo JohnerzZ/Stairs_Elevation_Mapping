@@ -1,0 +1,12 @@
+[submodule "src/elevation_mapping"]
+	path = src/elevation_mapping
+	url = https://github.com/anybotics/elevation_mapping.git
+[submodule "src/kindr"]
+	path = src/kindr
+	url = https://github.com/ANYbotics/kindr
+[submodule "src/kindr_ros"]
+	path = src/kindr_ros
+	url = https://github.com/ANYbotics/kindr_ros.git
+[submodule "src/realsense-ros"]
+	path = src/realsense-ros
+	url = https://github.com/IntelRealSense/realsense-ros
