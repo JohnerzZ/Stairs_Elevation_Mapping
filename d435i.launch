@@ -1,0 +1,37 @@
+<launch>
+
+  <include file="$(find realsense2_camera)/launch/rs_d400_and_t265.launch">
+            <arg name="device_type_camera1"             value="t265"/>
+            <arg name="device_type_camera2"             value="d4.5"/>		<!-- Note: using regular expression. match D435, D435i, D415... -->
+            <arg name="serial_no_camera1"               value=""/>
+            <arg name="serial_no_camera2"               value=""/>
+            <arg name="camera1"                         value="t265"/>
+            <arg name="camera2"                         value="d435"/>
+            <arg name="clip_distance"                   value="-2"/>
+            <arg name="enable_pointcloud"               value="true"/>
+            
+  </include>
+  
+  <!-- Publish tf 'base_footprint' as pose.-->
+  <node pkg="elevation_mapping_demos" type="tf_to_pose_publisher.py" name="tf_to_pose_publisher">
+    <param name="from_frame" type="string" value="t265_odom_frame" />
+    <param name="to_frame"   type="string" value="t265_link" />
+  </node>
+
+  
+  <!-- Elevation mapping node -->
+  <node pkg="elevation_mapping" type="elevation_mapping" name="elevation_mapping" output="screen">
+    <rosparam command="load" file="$(find elevation_mapping_demos)/config/robots/my.yaml" />
+    <rosparam command="load" file="$(find elevation_mapping_demos)/config/elevation_maps/simple_demo_map.yaml" />
+    <rosparam command="load" file="$(find elevation_mapping)/config/sensor_processors/realsense_d435.yaml" />
+    <rosparam command="load" file="$(find elevation_mapping_demos)/config/postprocessing/postprocessor_pipeline.yaml" />
+  </node>
+  
+
+  <!-- Launch visualizations for the resulting elevation map -->
+  <include file="$(find elevation_mapping_demos)/launch/visualization.launch" />
+
+  <!-- Launch RViz with the demo configuration -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find elevation_mapping_demos)/rviz/elevation_map_visualization_pointcloud.rviz" />
+
+</launch>
