@@ -113,10 +113,14 @@ roslaunch elevation_mapping_demos d435i.launch
 ```sh
 export PYTHONPATH=$PYTHONPATH:/usr/lib/python3/dist-packages
 ```
-15. Configure Rviz:
-* As a fixed frame: choose _t265_odom_frame_
-* Add topic -> By topic -> GridMap -> _elevation_map_raw_
-* Add topic -> By display type -> Rviz -> _TF_
+15. Configure Rviz:  
+
+* As a fixed frame: choose _t265_odom_frame_  
+
+* Add topic -> By topic -> GridMap -> _elevation_map_raw_  
+
+* Add topic -> By display type -> Rviz -> _TF_  
+
 
 ### Gradslam
 1. Install [cuda 11.4].
