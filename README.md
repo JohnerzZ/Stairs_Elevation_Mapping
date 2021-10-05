@@ -27,9 +27,13 @@ roslaunch realsense2_camera rs_rtabmap.launch use_rviz:=false use_rtabmapviz:=fa
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if you want to visualize using rtabmapviz instead of rviz.
 7. Configure rviz
-- Under Image->Image Topic choose _d400_color_image_raw_
-- Check the checkbox for the _Mapcloud_ topic
-- If you wish, check the checkbox for the _ColorOccupancyGrid_ topic
+
+- Under Image->Image Topic choose _d400_color_image_raw_  
+
+- Check the checkbox for the _Mapcloud_ topic  
+
+- If you wish, check the checkbox for the _ColorOccupancyGrid_ topic  
+
 
 ### Anybotics Elevation-Mapping
 1. Install [ROS noetic].
