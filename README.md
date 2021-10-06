@@ -27,9 +27,13 @@ roslaunch realsense2_camera rs_rtabmap.launch use_rviz:=false use_rtabmapviz:=fa
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if you want to visualize using rtabmapviz instead of rviz.
 7. Configure rviz
-* Under Image->Image Topic choose _d400_color_image_raw_
-* Check the checkbox for the _Mapcloud_ topic
-* If you wish, check the checkbox for the _ColorOccupancyGrid_ topic
+
+- Under Image->Image Topic choose _d400_color_image_raw_  
+
+- Check the checkbox for the _Mapcloud_ topic  
+
+- If you wish, check the checkbox for the _ColorOccupancyGrid_ topic  
+
 
 ### Anybotics Elevation-Mapping
 1. Install [ROS noetic].
@@ -109,10 +113,14 @@ roslaunch elevation_mapping_demos d435i.launch
 ```sh
 export PYTHONPATH=$PYTHONPATH:/usr/lib/python3/dist-packages
 ```
-15. Configure Rviz:
-* As a fixed frame: choose _t265_odom_frame_
-* Add topic -> By topic -> GridMap -> _elevation_map_raw_
-* Add topic -> By display type -> Rviz -> _TF_
+15. Configure Rviz:  
+
+* As a fixed frame: choose _t265_odom_frame_  
+
+* Add topic -> By topic -> GridMap -> _elevation_map_raw_  
+
+* Add topic -> By display type -> Rviz -> _TF_  
+
 
 ### Gradslam
 1. Install [cuda 11.4].
@@ -150,6 +158,8 @@ pip3 install glob2
 pip3 install pyrealsense2
 ```
 6. Download Gradslam_Realsense.ipynb and run it with the realsense cameras plugged in.
+
+The exact branches of the open source code used in this project can be found inside the src folder of this repository. 
 
    [Intel® RealSense™ Tracking Camera T265]: <https://www.intelrealsense.com/tracking-camera-t265/>
    [Intel® RealSense™ Depth Camera D435i]: <https://www.intelrealsense.com/depth-camera-d435i/>
