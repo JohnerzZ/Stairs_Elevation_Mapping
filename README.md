@@ -103,7 +103,7 @@ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ##### Test with Realsense D435i and T265
 11. Copy _my.yaml_ into _/catkin_ws/src/elevation_mapping/elevation_mapping_demos/config/robots_.
 12. Copy _d435i.launch_ into _/catkin_ws/src/elevation_mapping/elevation_mapping_demos/launch_.
-13. Go to folder _catkin_ws/src/realsense-ros/realsense2_camera_.
+13. Go to folder _catkin_ws/src/realsense-ros/realsense2_camera/launch_
 and replace _rs_d400_and_t265.launch_ with the _rs_d400_and_t265.launch_ that is provided in this repository.
 14. Run with:
 ```sh
