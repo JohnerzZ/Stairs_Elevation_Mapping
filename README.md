@@ -47,18 +47,18 @@ git clone https://github.com/anybotics/elevation_mapping.git
 cd ../
 catkin_make
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you wish to compile with catkin_build instead of catkin_make then instead of running catkin_make run:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If error "Could not find a package configuration file provided by "message_logger" appears when making, then simply go ahead and install the package from https://github.com/ANYbotics/message_logger.
+If you wish to compile with catkin_build instead of catkin_make then instead of running catkin_make run:
 ```sh
 sudo apt install python3-catkin-tools python3-osrf-pycommon
 catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release
 catkin build
 ```
-6. Ensure package is installed correctly by running the tests:
 ```sh
+6. Ensure package is installed correctly by running the tests:
 catkin_make run_tests
 rostest elevation_mapping elevation_mapping.test -t
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you wish to compile with catkin_build then run these instead:
 ```sh
 roscd elevation_mapping
 catkin build --catkin-make-args run_tests -- --this
