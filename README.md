@@ -54,8 +54,9 @@ sudo apt install python3-catkin-tools python3-osrf-pycommon
 catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release
 catkin build
 ```
-```sh
 6. Ensure package is installed correctly by running the tests:
+
+```sh
 catkin_make run_tests
 rostest elevation_mapping elevation_mapping.test -t
 ```
