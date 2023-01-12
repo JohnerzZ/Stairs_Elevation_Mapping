@@ -1,0 +1,48 @@
+<launch>
+
+    <arg name="svo_file"             default="" /> <!-- <arg name="svo_file" default="path/to/svo/file.svo"> -->
+    <arg name="stream"               default="" /> <!-- <arg name="stream" default="<ip_address>:<port>"> -->
+
+    <arg name="zed_node_name"        default="zed_node" />
+    <arg name="camera_model"         default="zed2" />
+    <arg name="publish_urdf"         default="true" />
+
+    <arg name="camera_name"          default="zed" />
+
+    <arg name="base_frame"           default="base_link" />
+
+
+  <!-- ZED Wrapper Node-->
+  <include file="$(find zed_wrapper)/launch/include/zed_camera.launch.xml">
+      <arg name="camera_name"         value="$(arg camera_name)" />
+      <arg name="svo_file"            value="$(arg svo_file)" />
+      <arg name="stream"              value="$(arg stream)" />
+      <arg name="node_name"           value="$(arg zed_node_name)" />
+      <arg name="camera_model"        value="$(arg camera_model)" />
+      <arg name="base_frame"          value="$(arg base_frame)" />
+      <arg name="publish_urdf"        value="$(arg publish_urdf)" />
+  </include>
+
+    <!-- Publish tf 'base_footprint' as pose.-->
+  <node pkg="elevation_mapping_demos" type="tf_to_pose_publisher.py" name="tf_to_pose_publisher">
+    <param name="from_frame" type="string" value="odom" />
+    <param name="to_frame"   type="string" value="base_link" />
+  </node>
+
+  
+  <!-- Elevation mapping node -->
+  <node pkg="elevation_mapping" type="elevation_mapping" name="elevation_mapping" output="screen">
+    <rosparam command="load" file="$(find elevation_mapping_demos)/config/robots/zed2.yaml" />
+    <rosparam command="load" file="$(find elevation_mapping_demos)/config/elevation_maps/long_range.yaml" />
+    <rosparam command="load" file="$(find elevation_mapping)/config/sensor_processors/realsense_d435.yaml" />
+    <rosparam command="load" file="$(find elevation_mapping_demos)/config/postprocessing/postprocessor_pipeline.yaml" />
+  </node>
+  
+
+  <!-- Launch visualizations for the resulting elevation map -->
+  <include file="$(find elevation_mapping_demos)/launch/visualization.launch" />
+
+  <!-- Launch RViz with the demo configuration -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find elevation_mapping_demos)/rviz/elevation_map_visualization_pointcloud.rviz" />
+
+</launch>
