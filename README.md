@@ -225,7 +225,14 @@ rviz
 6. Configure Rviz to visualize the map.
 
 
-The exact branches of the open source code used in this project can be found inside the src folder of this repository. 
+<font size="1"> The exact branches of the open source code used in this project can be found inside the src folder of this repository.
+To clone and build the project from source run:
+```sh
+git clone --recurse-submodules https://JohnZar@bitbucket.org/csl_legged/mini-project-elevation-mapping.git
+```
+then move the cloned src folder into your catkin_ws and build it.
+</font>
+
 
    [Intel® RealSense™ Tracking Camera T265]: <https://www.intelrealsense.com/tracking-camera-t265/>
    [Intel® RealSense™ Depth Camera D435i]: <https://www.intelrealsense.com/depth-camera-d435i/>
